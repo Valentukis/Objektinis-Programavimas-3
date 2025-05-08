@@ -38,7 +38,7 @@ void test_io() {
     std::cout << "\nTesting input operator...\n";
 
     Studentas s;
-    std::stringstream ss("Vardenis Pavardenis 8");
+    std::stringstream ss("Vardenis Pavardenis 10 9 8 7 6 8");
     ss >> s;
     std::cout << s.vardas() << " " << s.pavarde() << " " << s.egzaminas() << endl;
     std:: cout << string(80, '-') << endl;
@@ -54,7 +54,7 @@ void test_io() {
 }
 
 int main() {
-    Zmogus zm;
+    //Zmogus zm;
     test_rule_of_five();
     test_io();
 }

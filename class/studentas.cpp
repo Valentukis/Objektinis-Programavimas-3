@@ -67,7 +67,18 @@ Studentas& Studentas::operator=(Studentas&& other) noexcept { //move assign
 }
 
 std::istream& operator>>(std::istream& is, Studentas& s) { //ivestis
-    is >> s.var_ >> s.pav_ >> s.egz_;
+    is >> s.var_ >> s.pav_;
+
+    int nd_count, a;
+    is >> s.var_ >> s.pav_ >> nd_count;
+
+    for (int i = 0; i < nd_count; i++) {
+        is >> a;
+        s.paz_.push_back(a);
+    }
+
+    is >> s.egz_;
+
     return is;
 }
 
