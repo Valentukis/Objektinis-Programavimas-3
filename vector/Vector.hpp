@@ -71,26 +71,45 @@ class Vector {
         clear();
         if (data_) alloc_.deallocate(data_, cap_);
     }
-
+    
+    //copy/move assign
     Vector& operator=(Vector const& rhs) {
-    if (this != &rhs) {
-        Vector tmp(rhs);
-        swap(tmp);
+        if (this != &rhs) {
+            Vector tmp(rhs);
+            swap(tmp);
+        }
+        return *this;
     }
-    return *this;
-}
 
-Vector& operator=(Vector&& rhs) noexcept {
-    if (this != &rhs) {
-        clear();
-        data_ = rhs.data_;
-        size_ = rhs.size_;
-        cap_  = rhs.cap_;
-        rhs.data_ = nullptr;
-        rhs.size_ = rhs.cap_ = 0;
+    Vector& operator=(Vector&& rhs) noexcept {
+        if (this != &rhs) {
+            clear();
+            data_ = rhs.data_;
+            size_ = rhs.size_;
+            cap_  = rhs.cap_;
+            rhs.data_ = nullptr;
+            rhs.size_ = rhs.cap_ = 0;
+        }
+        return *this;
     }
-    return *this;
-}
+
+    // iterators
+    iterator begin() noexcept { return data_; } //begin
+    const_iterator begin() const noexcept { return data_; }
+    const_iterator cbegin() const noexcept { return data_; }
+
+    iterator end() noexcept { return data_ + size_; } //end
+    const_iterator end() const noexcept { return data_ + size_; }
+    const_iterator cend() const noexcept { return data_ + size_; }
+
+    reverse_iterator rbegin() noexcept { return reverse_iterator(end()); }
+    const_reverse_iterator rbegin() const noexcept { return const_reverse_iterator(end()); }
+    const_reverse_iterator crbegin() const noexcept { return const_reverse_iterator(end()); }
+
+    reverse_iterator rend() noexcept { return reverse_iterator(begin()); } //reverse
+    const_reverse_iterator rend() const noexcept { return const_reverse_iterator(begin()); }
+    const_reverse_iterator crend() const noexcept { return const_reverse_iterator(begin()); }
+
 
 };
 
