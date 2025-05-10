@@ -153,7 +153,94 @@ class Vector {
     pointer data() noexcept { return data_; } //raw ptr
     const_pointer data() const noexcept { return data_; }
 
-    
-};
+    //modifiers
+    void clear() noexcept {
+        for (size_type i = 0; i < size_; ++i)
+        std::allocator_traits<Alloc>::destroy(alloc_, data_ + i);
+        size_ = 0;
+    }
 
-#endif
+    void push_back(T const&  value) {
+        if (size_ == cap_) reserve(cap_ ? cap_*2 : 1);
+        std::allocator_traits<Alloc>::construct(alloc_, data_ + size_++, value);
+    }
+    void push_back(T&& value) {
+        if (size_ == cap_) reserve(cap_ ? cap_*2 : 1);
+        std::allocator_traits<Alloc>::construct(alloc_, data_ + size_++, std::move(value));
+    }
+
+    template<typename... Args>
+    reference emplace_back(Args&&... args) {
+        if (size_ == cap_) reserve(cap_ ? cap_*2 : 1);
+        std::allocator_traits<Alloc>::construct(alloc_, data_ + size_, std::forward<Args>(args)...);
+        return data_[size_++];
+    }
+
+    void pop_back() {
+        if (size_) {
+        std::allocator_traits<Alloc>::destroy(alloc_, data_ + --size_);
+        }
+    }
+
+    iterator insert(const_iterator pos, T const& value) {
+        return emplace(pos, value);
+    }
+    iterator insert(const_iterator pos, T&& value) {
+        return emplace(pos, std::move(value));
+    }
+
+    template<typename... Args>
+    iterator emplace(const_iterator cpos, Args&&... args) {
+        size_type idx = cpos - data_;
+        if (size_ == cap_) reserve(cap_ ? cap_*2 : 1);
+        iterator pos = data_ + idx;
+        // move elements one step right
+        for (iterator it = data_ + size_; it != pos; --it) {
+        std::allocator_traits<Alloc>::construct(
+            alloc_, it, std::move(*(it-1)));
+        std::allocator_traits<Alloc>::destroy(alloc_, it-1);
+        }
+        std::allocator_traits<Alloc>::construct(alloc_, pos, std::forward<Args>(args)...);
+        ++size_;
+        return pos;
+    }
+
+    iterator erase(const_iterator cpos) {
+        return erase(cpos, cpos+1);
+    }
+    iterator erase(const_iterator cfirst, const_iterator clast) {
+        size_type idx1 = cfirst - data_;
+        size_type idx2 = clast  - data_;
+        for (size_type i = idx2; i < size_; ++i) {
+        data_[i-1] = std::move(data_[i]);
+        }
+        // destroy trailing
+        for (size_type i = size_-(idx2-idx1); i < size_; ++i) {
+        std::allocator_traits<Alloc>::destroy(alloc_, data_ + i);
+        }
+        size_ -= (idx2-idx1);
+        return data_ + idx1;
+    }
+
+    void resize(size_type n, T const& value = T()) {
+        if (n < size_) {
+        while (size_ > n) pop_back();
+        } else {
+        reserve(n);
+        while (size_ < n) push_back(value);
+        }
+    }
+
+    void swap(Vector& other) noexcept(
+        std::allocator_traits<Alloc>::propagate_on_container_swap::value ||
+        std::allocator_traits<Alloc>::is_always_equal::value)
+    {
+        using std::swap;
+        swap(alloc_, other.alloc_);
+        swap(data_, other.data_);
+        swap(size_, other.size_);
+        swap(cap_,  other.cap_);
+    }
+    };
+
+    #endif
