@@ -244,4 +244,32 @@ Buvo sukurta bazinė klasė Zmogus. Iš jos Studentas yra derived klasė. Zmogus
      
 ![image](https://github.com/user-attachments/assets/5d7d3eb8-6775-43e5-b68c-bdfad544bbb6)
 
+
+Nuosavas Vector konteineris (V3.0): 
+---------------------------------------------------
+Versijoje 3.0 buvo sukurtas nuosavas Vector konteineris. Funkcionalumo prasme atitinka apie 90-100% STL vector. Pagrindinės member funkcijos pristatomos apačioje (Su visa klase galite susipažinti dokumentacijoje, pateiktoje po funkcijų aprašais):
+* Default konsturktorius\
+![image](https://github.com/user-attachments/assets/9c7370cf-7013-4f70-9a53-8b5feaffd87a)
+* Init list\
+![image](https://github.com/user-attachments/assets/75bc4b14-f215-4c71-b665-2029d05d391c)
+* Destruktorius\
+![image](https://github.com/user-attachments/assets/937a0fd6-a28b-4ca1-bc4f-b14c2fb07645) 
+* Copy assign\
+![image](https://github.com/user-attachments/assets/741d66ff-6426-466a-8968-8749709df113)  
+* Iteratoriai\
+![image](https://github.com/user-attachments/assets/06266c99-0365-411d-81b9-2172ec4ed78d) 
+* Capacity\
+![image](https://github.com/user-attachments/assets/4e6fbbeb-efa8-42d4-9cd9-83a13738f4a7)
+* Element access\
+![image](https://github.com/user-attachments/assets/148844d1-c5ae-4e52-83c4-503bf291b476)  
+* Modifiers. Naudojant push_back, skirtingai nei STL vector, reserve capacity growth faktorius pakeistas į 10. Dėl šio pasirinkimo plačiau komentuojama prie optimizavimo skilties.\
+![image](https://github.com/user-attachments/assets/2cf2fd70-6544-4205-8932-50acf1eb2772)  
+* Non-member funkcijos. Šioje vietoje buvo nuspręsta neįtraukti palyginimo (<, >, etc) operatorių, nes nuo C++20 jie buvo pašalinti ir iš STL vector. Skirtingai nei STL vector, buvo pridėtas output galimybė  naudojant operatorių << (Išvedimas, kaip Python kalbos list)\
+![image](https://github.com/user-attachments/assets/2fcb05e6-ae5e-4ef5-96bd-a940d31c827b)    
+
+*Testavimas*
+Taip pat buvo parašyti testai naudojant Catch klasės funkcionalumui testuoti. 
+![image](https://github.com/user-attachments/assets/0f0f27af-6d3f-488b-9a2c-e05bbceebee2)
+
+
 Kilus klausimams ar pastaboms, susisiekti el. paštu: valentinas.samatovicius@mif.stud.vu.lt
