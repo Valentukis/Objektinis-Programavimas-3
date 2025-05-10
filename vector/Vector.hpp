@@ -112,8 +112,8 @@ public:
     const_reverse_iterator crend() const noexcept { return const_reverse_iterator(begin()); }
 
     //capacity
-    bool      empty()    const noexcept { return size_ == 0; }
-    size_type size()     const noexcept { return size_; }
+    bool empty() const noexcept { return size_ == 0; }
+    size_type size() const noexcept { return size_; }
     size_type capacity() const noexcept { return cap_;  }
 
     void reserve(size_type newCap) {
@@ -171,17 +171,17 @@ public:
     }
 
     void push_back(T const&  value) {
-        if (size_ == cap_) reserve(cap_ ? cap_*2 : 1);
+        if (size_ == cap_) reserve(cap_ ? cap_*10 : 1);
         std::allocator_traits<Alloc>::construct(alloc_, data_ + size_++, value);
     }
     void push_back(T&& value) {
-        if (size_ == cap_) reserve(cap_ ? cap_*2 : 1);
+        if (size_ == cap_) reserve(cap_ ? cap_*10 : 1);
         std::allocator_traits<Alloc>::construct(alloc_, data_ + size_++, std::move(value));
     }
 
     template<typename... Args>
     reference emplace_back(Args&&... args) {
-        if (size_ == cap_) reserve(cap_ ? cap_*2 : 1);
+        if (size_ == cap_) reserve(cap_ ? cap_*10 : 1);
         std::allocator_traits<Alloc>::construct(alloc_, data_ + size_, std::forward<Args>(args)...);
         return data_[size_++];
     }
