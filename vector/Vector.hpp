@@ -10,7 +10,7 @@
 
 template<typename T, typename Alloc = std::allocator<T>>
 class Vector {
-
+public:
     // member types
     using value_type = T;
     using allocator_type = Alloc;
@@ -241,6 +241,12 @@ class Vector {
         swap(size_, other.size_);
         swap(cap_,  other.cap_);
     }
-    };
 
-    #endif
+private:
+    Alloc alloc_;
+    pointer data_;
+    size_type size_;
+    size_type cap_;
+};
+
+#endif
