@@ -110,7 +110,29 @@ class Vector {
     const_reverse_iterator rend() const noexcept { return const_reverse_iterator(begin()); }
     const_reverse_iterator crend() const noexcept { return const_reverse_iterator(begin()); }
 
+    //capacity
+    bool      empty()    const noexcept { return size_ == 0; }
+    size_type size()     const noexcept { return size_; }
+    size_type capacity() const noexcept { return cap_;  }
 
+    void reserve(size_type newCap) {
+        if (newCap <= cap_) return;
+        pointer newData = alloc_.allocate(newCap);
+        for (size_type i = 0; i < size_; ++i) {
+        std::allocator_traits<Alloc>::construct(alloc_, newData + i,
+            std::move_if_noexcept(data_[i]));
+        std::allocator_traits<Alloc>::destroy(alloc_, data_ + i);
+        }
+        if (data_) alloc_.deallocate(data_, cap_);
+        data_ = newData;
+        cap_  = newCap;
+    }
+
+    void shrink_to_fit() {
+        if (size_ < cap_) reserve(size_);
+    }
+
+    
 };
 
 #endif
