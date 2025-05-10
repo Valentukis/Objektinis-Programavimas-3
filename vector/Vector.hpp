@@ -132,6 +132,27 @@ class Vector {
         if (size_ < cap_) reserve(size_);
     }
 
+    //element access
+    reference operator[](size_type i) noexcept { return data_[i]; } //unchecked
+    const_reference operator[](size_type i) const noexcept { return data_[i]; }
+
+    reference at(size_type i) { //checked
+        if (i >= size_) throw std::out_of_range("Vector::at");
+        return data_[i];
+    }
+    const_reference at(size_type i) const {
+        if (i >= size_) throw std::out_of_range("Vector::at");
+        return data_[i];
+    }
+
+    reference front() noexcept { return data_[0]; }  //front/back
+    const_reference front() const noexcept { return data_[0]; }
+    reference back() noexcept { return data_[size_-1]; }
+    const_reference back() const noexcept { return data_[size_-1]; }
+
+    pointer data() noexcept { return data_; } //raw ptr
+    const_pointer data() const noexcept { return data_; }
+
     
 };
 
