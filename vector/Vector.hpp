@@ -130,7 +130,16 @@ public:
     }
 
     void shrink_to_fit() {
-        if (size_ < cap_) reserve(size_);
+        if (size_ < cap_) {
+            pointer newData = alloc_.allocate(size_);
+            for (size_type i = 0; i < size_; ++i) {
+                std::allocator_traits<Alloc>::construct(alloc_, newData + i, std::move_if_noexcept(data_[i]));
+                std::allocator_traits<Alloc>::destroy(alloc_, data_ + i);
+            }
+            alloc_.deallocate(data_, cap_);
+            data_ = newData;
+            cap_ = size_;
+        }
     }
 
     //element access
@@ -213,13 +222,12 @@ public:
         size_type idx1 = cfirst - data_;
         size_type idx2 = clast  - data_;
         for (size_type i = idx2; i < size_; ++i) {
-        data_[i-1] = std::move(data_[i]);
+            data_[idx1 + i - idx2] = std::move(data_[i]);
         }
-        // destroy trailing
-        for (size_type i = size_-(idx2-idx1); i < size_; ++i) {
-        std::allocator_traits<Alloc>::destroy(alloc_, data_ + i);
+        for (size_type i = size_ - (idx2 - idx1); i < size_; ++i) {
+            std::allocator_traits<Alloc>::destroy(alloc_, data_ + i);
         }
-        size_ -= (idx2-idx1);
+        size_ -= (idx2 - idx1);
         return data_ + idx1;
     }
 
