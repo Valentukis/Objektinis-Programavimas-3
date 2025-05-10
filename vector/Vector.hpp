@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <utility>
+#include <ostream>  
 
 template<typename T, typename Alloc = std::allocator<T>>
 class Vector {
@@ -248,5 +249,29 @@ private:
     size_type size_;
     size_type cap_;
 };
+
+// non‐member functions
+template<typename T, typename Alloc>
+void swap(Vector<T,Alloc>& a, Vector<T,Alloc>& b) noexcept(noexcept(a.swap(b))) {
+  a.swap(b);
+}
+
+template<typename T, typename Alloc>
+bool operator==(Vector<T,Alloc> const& a, Vector<T,Alloc> const& b){
+  return a.size()==b.size() && std::equal(a.begin(), a.end(), b.begin());
+}
+template<typename T, typename Alloc>
+bool operator!=(Vector<T,Alloc> const& a, Vector<T,Alloc> const& b){ return !(a==b); }
+
+template<typename T, typename Alloc>
+std::ostream& operator<<(std::ostream& os, const Vector<T, Alloc>& v) {
+    os << "[";
+    for (std::size_t i = 0; i < v.size(); ++i) {
+        os << v[i];
+        if (i + 1 != v.size()) os << ", ";
+    }
+    os << "]";
+    return os;
+}
 
 #endif
