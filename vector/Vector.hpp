@@ -72,7 +72,26 @@ class Vector {
         if (data_) alloc_.deallocate(data_, cap_);
     }
 
-    
+    Vector& operator=(Vector const& rhs) {
+    if (this != &rhs) {
+        Vector tmp(rhs);
+        swap(tmp);
+    }
+    return *this;
+}
+
+Vector& operator=(Vector&& rhs) noexcept {
+    if (this != &rhs) {
+        clear();
+        data_ = rhs.data_;
+        size_ = rhs.size_;
+        cap_  = rhs.cap_;
+        rhs.data_ = nullptr;
+        rhs.size_ = rhs.cap_ = 0;
+    }
+    return *this;
+}
+
 };
 
 #endif
