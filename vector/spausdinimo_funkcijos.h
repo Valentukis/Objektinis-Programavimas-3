@@ -3,7 +3,7 @@
 
 #include "studentas.h"
 
-void spausdinimas_kartu(vector <Studentas> &grupe, bool spausdinimas);
-void spausdinimas_atskiras(vector <Studentas> &grupe);
+void spausdinimas_kartu(Vector <Studentas> &grupe, bool spausdinimas);
+void spausdinimas_atskiras(Vector <Studentas> &grupe);
 int eigos_parinktis();
 #endif

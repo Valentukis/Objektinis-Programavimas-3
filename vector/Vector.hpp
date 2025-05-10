@@ -251,6 +251,15 @@ public:
         swap(cap_,  other.cap_);
     }
 
+    template<typename InputIt>
+    void assign(InputIt first, InputIt last) {
+        clear();
+        reserve(std::distance(first, last));
+        for (; first != last; ++first)
+            push_back(*first);
+    }
+
+
 private:
     Alloc alloc_;
     pointer data_;

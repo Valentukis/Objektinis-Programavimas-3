@@ -1,7 +1,6 @@
 #ifndef MANO_BIBLIOTEKA
 #define MANO_BIBLIOTEKA
 #include <iostream>
-#include <vector>
 #include <algorithm>
 #include <cmath>
 #include <iomanip>
@@ -14,12 +13,12 @@
 #include <limits>
 #include <exception>
 #include <numeric>
+#include "Vector.hpp"
 
 using std::istringstream;
 using std::string;
 using std::cout;
 using std::endl;
-using std::vector;
 using std::endl;
 using std::cin;
 using std::sort;

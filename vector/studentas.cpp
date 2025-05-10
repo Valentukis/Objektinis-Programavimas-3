@@ -1,7 +1,7 @@
 #include "studentas.h"
 
 Studentas::Studentas() : egz_(0) {}
-Studentas::Studentas(const string& vardas, const string& pavarde, const vector<int>& paz, int egzaminas) : Zmogus(vardas, pavarde), paz_(paz), egz_(egzaminas) {}
+Studentas::Studentas(const string& vardas, const string& pavarde, const Vector<int>& paz, int egzaminas) : Zmogus(vardas, pavarde), paz_(paz), egz_(egzaminas) {}
 
 Studentas::Studentas(std::istream& is, int sk) {
     is >> var_ >> pav_;
@@ -283,7 +283,7 @@ bool lyginti_pagal_vidurki(const Studentas &a, const Studentas &b) {
 bool lyginti_pagal_mediana(const Studentas &a, const Studentas &b) {
     return a.galutinis_mediana() > b.galutinis_mediana();
 }
-void pasirink_rusiavimas(vector<Studentas> &grupe) {
+void pasirink_rusiavimas(Vector<Studentas> &grupe) {
 
     int ivestis;
 
@@ -299,16 +299,16 @@ void pasirink_rusiavimas(vector<Studentas> &grupe) {
     }
 
     auto start = std::chrono::high_resolution_clock::now();
-    if (ivestis == 1) stable_sort(grupe.begin(), grupe.end(), lyginti_pagal_varda);
-    else if (ivestis == 2) stable_sort(grupe.begin(), grupe.end(), lyginti_pagal_pavarde);
-    else if (ivestis == 3) stable_sort(grupe.begin(), grupe.end(), lyginti_pagal_vidurki);
-    else if (ivestis == 4) stable_sort(grupe.begin(), grupe.end(), lyginti_pagal_mediana);
+    if (ivestis == 1) std::stable_sort(grupe.begin(), grupe.end(), lyginti_pagal_varda);
+    else if (ivestis == 2) std::stable_sort(grupe.begin(), grupe.end(), lyginti_pagal_pavarde);
+    else if (ivestis == 3) std::stable_sort(grupe.begin(), grupe.end(), lyginti_pagal_vidurki);
+    else if (ivestis == 4) std::stable_sort(grupe.begin(), grupe.end(), lyginti_pagal_mediana);
     auto end = std::chrono::high_resolution_clock::now(); 
     std::chrono::duration<double> elapsed = end - start;
     cout << "Rūšiavimas pagal parinktį užtruko: " << std::fixed << std::setprecision(1) << elapsed.count() << "s" << endl;
 }
 
-void rusiuoti_grupemis(std::vector<Studentas> &grupe, std::vector<Studentas> &vargseliai) {
+void rusiuoti_grupemis(Vector<Studentas> &grupe, Vector<Studentas> &vargseliai) {
     auto start = std::chrono::high_resolution_clock::now(); 
 
     auto it = std::partition(grupe.begin(), grupe.end(), [](const Studentas &s) {

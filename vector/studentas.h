@@ -7,7 +7,7 @@
 class Studentas : public Zmogus {
     private:
         int lytis_;
-        vector<int> paz_;
+        Vector<int> paz_;
         int egz_;
         double vidurkis_;
         double mediana_;
@@ -16,7 +16,7 @@ class Studentas : public Zmogus {
         
     public:
         Studentas();
-        Studentas(const string& vardas, const string& pavarde, const vector<int>& paz, int egzaminas);
+        Studentas(const string& vardas, const string& pavarde, const Vector<int>& paz, int egzaminas);
         Studentas(std::istream& is, int sk);
 
         Studentas(const Studentas& other);
@@ -50,7 +50,7 @@ bool lyginti_pagal_varda(const Studentas &a, const Studentas &b);
 bool lyginti_pagal_pavarda(const Studentas &a, const Studentas &b);
 bool lyginti_pagal_vidurki(const Studentas &a, const Studentas &b);
 bool lyginti_pagal_mediana(const Studentas &a, const Studentas &b);
-void pasirink_rusiavimas(vector<Studentas> &grupe);
-void rusiuoti_grupemis(vector<Studentas> &grupe, vector<Studentas> &vargseliai);
+void pasirink_rusiavimas(Vector<Studentas> &grupe);
+void rusiuoti_grupemis(Vector<Studentas> &grupe, Vector<Studentas> &vargseliai);
 
 #endif

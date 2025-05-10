@@ -11,7 +11,7 @@ int rasti_nd_skaiciu_faile(ifstream& fd) {
     return nd_sk;
 }
 
-void buferio_apdorojimas(vector <Studentas> &grupe, size_t buffer_size, vector <char> &buffer, ifstream &fd, int nd_sk) {
+void buferio_apdorojimas(Vector <Studentas> &grupe, size_t buffer_size, Vector <char> &buffer, ifstream &fd, int nd_sk) {
     string line, leftover = "", chunk;
     
     while(fd.read(buffer.data(), buffer_size) || fd.gcount() ) {
@@ -107,10 +107,10 @@ void failo_pav_gavimas(ifstream &fd) {
         }
 }
 
-void ivedimas_failu(vector <Studentas> &grupe) {
+void ivedimas_failu(Vector <Studentas> &grupe) {
 
     const size_t buffer_size = 8192;
-    vector <char> buffer(buffer_size);
+    Vector <char> buffer(buffer_size);
     int spausdinimas;
     ifstream fd;
     bool generuoti;
@@ -158,7 +158,7 @@ void ivedimas_failu(vector <Studentas> &grupe) {
     cout << "Rūšiuojama į kietuolius ir varšelius..." << endl;
     ofstream varg("vargseliai"+std::to_string(grupe.size()) + ".txt");
     ofstream kiet("kietuoliai"+std::to_string(grupe.size()) + ".txt");
-    vector<Studentas> kietuoliai, vargseliai;
+    Vector<Studentas> kietuoliai, vargseliai;
     rusiuoti_grupemis(grupe, vargseliai);
 
     cout << "Išvedama į failą..." << endl;

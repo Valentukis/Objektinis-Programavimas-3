@@ -1,6 +1,6 @@
 #include "spausdinimo_funkcijos.h"
 
-void spausdinimas_atskiras(vector <Studentas> &grupe) {
+void spausdinimas_atskiras(Vector <Studentas> &grupe) {
     char pasirinkimas;
     
     while(true) {
@@ -18,7 +18,7 @@ void spausdinimas_atskiras(vector <Studentas> &grupe) {
         }
 }
 
-void spausdinimas_kartu(vector <Studentas> &grupe, bool spausdinimas) {
+void spausdinimas_kartu(Vector <Studentas> &grupe, bool spausdinimas) {
     if (spausdinimas) {
         std::ofstream fr("rez.txt");
         cout << "Įrašoma į failą..." << endl;
