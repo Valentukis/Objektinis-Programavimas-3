@@ -16,16 +16,14 @@ Programos pasikeitimai tarp versijų:
 
 Jūsų patogumui, buvo sukurtas Makefile. Atsidarę mėgstamiausią terminalą, galite naudoti šias komandas:
 1. Paleidžiamojo failo kūrimas   
-  1.1 Vector realziacija - "make vector" 
-  1.2 List realizacija - "make list"   
-  1.3 Deque realizacija - "make deque"
-  1.4 Class+Vector realizacija - "make main" (arba "make")
-3. Paleidimas  
-  2.1 Vector realziacija - "./vector_program"   
-  2.2 List realizacija - "./list_program"   
-  2.3 Deque realizacija - "./deque_program"   
-  2.4 Class realizacija - "./main"
-5. Programos valymas (ištrina sugeneruotus vykdomuosius failus) - "make clean"
+  1.1 Implementacija su std::vector - "make main" 
+  1.2 Implementacija su nuosavu Vector - "make custom"
+  1.3 Studento klases testavimas - "make test"
+2. Paleidimas  
+  2.1 std::vector - "./main"   
+  2.2 Nuosavas Vector - "./custom"
+  2.3 Testavimas - "./test"
+3. Programos valymas (ištrina sugeneruotus vykdomuosius failus) - "make clean"
 
 ![image](https://github.com/user-attachments/assets/cb8a2436-d262-4c9d-bc6d-33f241aac815)
 
