@@ -1,0 +1,56 @@
+\doxysection{vector/\+Vector.hpp File Reference}
+\hypertarget{_vector_8hpp}{}\label{_vector_8hpp}\index{vector/Vector.hpp@{vector/Vector.hpp}}
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$initializer\+\_\+list$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$ostream$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_vector}{Vector$<$ T, Alloc $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T, typename Alloc$>$ }\\void \mbox{\hyperlink{_vector_8hpp_a131c614a690a00748e375769dee24ffb}{swap}} (\mbox{\hyperlink{class_vector}{Vector}}$<$ T, Alloc $>$ \&a, \mbox{\hyperlink{class_vector}{Vector}}$<$ T, Alloc $>$ \&b) noexcept(noexcept(a.\+swap(b)))
+\item 
+{\footnotesize template$<$typename T, typename Alloc$>$ }\\bool \mbox{\hyperlink{_vector_8hpp_ab53dddc55b7169f3826e7bd537016057}{operator==}} (\mbox{\hyperlink{class_vector}{Vector}}$<$ T, Alloc $>$ const \&a, \mbox{\hyperlink{class_vector}{Vector}}$<$ T, Alloc $>$ const \&b)
+\item 
+{\footnotesize template$<$typename T, typename Alloc$>$ }\\bool \mbox{\hyperlink{_vector_8hpp_a321d65aa006fca0820bb5ac7f6769b65}{operator!=}} (\mbox{\hyperlink{class_vector}{Vector}}$<$ T, Alloc $>$ const \&a, \mbox{\hyperlink{class_vector}{Vector}}$<$ T, Alloc $>$ const \&b)
+\item 
+{\footnotesize template$<$typename T, typename Alloc$>$ }\\std\+::ostream \& \mbox{\hyperlink{_vector_8hpp_ad703e024da492a0c030280a6f5c352f5}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{class_vector}{Vector}}$<$ T, Alloc $>$ \&v)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_vector_8hpp_a321d65aa006fca0820bb5ac7f6769b65}\index{Vector.hpp@{Vector.hpp}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Vector.hpp@{Vector.hpp}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily \label{_vector_8hpp_a321d65aa006fca0820bb5ac7f6769b65} 
+template$<$typename T, typename Alloc$>$ \\
+bool operator!= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ T, Alloc $>$ const \&}]{a}{, }\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ T, Alloc $>$ const \&}]{b}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_vector_8hpp_ad703e024da492a0c030280a6f5c352f5}\index{Vector.hpp@{Vector.hpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Vector.hpp@{Vector.hpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily \label{_vector_8hpp_ad703e024da492a0c030280a6f5c352f5} 
+template$<$typename T, typename Alloc$>$ \\
+std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{class_vector}{Vector}}$<$ T, Alloc $>$ \&}]{v}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_vector_8hpp_ab53dddc55b7169f3826e7bd537016057}\index{Vector.hpp@{Vector.hpp}!operator==@{operator==}}
+\index{operator==@{operator==}!Vector.hpp@{Vector.hpp}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{_vector_8hpp_ab53dddc55b7169f3826e7bd537016057} 
+template$<$typename T, typename Alloc$>$ \\
+bool operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ T, Alloc $>$ const \&}]{a}{, }\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ T, Alloc $>$ const \&}]{b}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_vector_8hpp_a131c614a690a00748e375769dee24ffb}\index{Vector.hpp@{Vector.hpp}!swap@{swap}}
+\index{swap@{swap}!Vector.hpp@{Vector.hpp}}
+\doxysubsubsection{\texorpdfstring{swap()}{swap()}}
+{\footnotesize\ttfamily \label{_vector_8hpp_a131c614a690a00748e375769dee24ffb} 
+template$<$typename T, typename Alloc$>$ \\
+void swap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ T, Alloc $>$ \&}]{a}{, }\item[{\mbox{\hyperlink{class_vector}{Vector}}$<$ T, Alloc $>$ \&}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
