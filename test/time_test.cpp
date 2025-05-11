@@ -8,7 +8,7 @@ using namespace std::chrono;
 using namespace std;
 
 int main() {
-    unsigned int sz = 1000000;
+    unsigned int sz = 100000000;
     size_t reallocs_std = 0;
     size_t reallocs_custom = 0;
 

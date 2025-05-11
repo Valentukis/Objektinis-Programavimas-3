@@ -47,13 +47,13 @@ void failo_generavimas(ifstream &fd){
 
     int Studentasent_sk, nd_sk;
         
-        cout << "Įveskite, kiek Studentasentų sugeneruoti: " << endl;
+        cout << "Įveskite, kiek studentų sugeneruoti: " << endl;
         while(true) {
             cin >> Studentasent_sk;
             if (cin.fail() || Studentasent_sk <= 0) {
                 cin.clear(); // Clear error state
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
-                cout << "Klaida! Įveskite teigiamą sveiką skaičių Studentasentams: ";
+                cout << "Klaida! Įveskite teigiamą sveiką skaičių studentams: ";
             } else break;
         }
 
@@ -63,13 +63,13 @@ void failo_generavimas(ifstream &fd){
             if (cin.fail() || nd_sk <= 0) {
                 cin.clear(); // Clear error state
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
-                cout << "Klaida! Įveskite teigiamą sveiką skaičių Studentasentams: ";
+                cout << "Klaida! Įveskite teigiamą sveiką skaičių studentams: ";
             } else break;
         }
 
         auto start = std::chrono::high_resolution_clock::now(); 
 
-        string failo_pav = "Studentasentai" + std::to_string(Studentasent_sk) + ".txt";
+        string failo_pav = "studentai" + std::to_string(Studentasent_sk) + ".txt";
         ofstream fr;
         fr.open(failo_pav);
         
