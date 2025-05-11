@@ -280,7 +280,36 @@ Buvo atlikta efektyvumo spartos analizė lyginant sukurtą vector ir STL vector 
 Atlikus laiko analizę paaikšėjo, kad STL vector konteineris buvo apie 1.5x greitesnis negu nuosavas, o perskirstymų kiekis buvo vienodas. Atsižvelgus į tai buvo siekiama optimizuoti nuosavą konteinerį šiai programai ir pavyko ženkliai sumažinti perksirstymų skaičių ir pagreitinti, palyginus su STL vector. Pagrindinė optimizacija buvo Reserve() funkcijos growth faktoriaus pakeitimas. Paprastame STL vector jis yra 2x t.y. Jei size() == capacity(), capacity dvigubiname, o mūsų optimizuotame variante - padidiname 10x. Ši optimizacija geriau atitinka programos poreikius. Nepaisant to, bendras programos vykdymo laikas ypatingai nepasikeitė - taigi, limituoja ne vector įgyvendinimas, o duomenų skaitymas/rašyimas į failą. Visi laikai ir palyginimai pateikiami apačioje lentelėse:
 
 
+*Efektyvumo/spartos analizė std::vector vs nuosavas Vector*
+| Realizacija | 10000 įrašų | 100000 įrašų | 1000000 įrašų | 10000000 įrašų | 10000000 įrašų | 
+| ------ | ------------ | ------------- | -------------- | -------------- | -------------- |
+| std::vector | < 0.01s | <0.01s | 0.02s | 0.18s | 1.76s |
+| Vector | < 0.01s | <0.01s | 0.01s | 0.10s | 1.02s |
+
+*Atminties perskirstymų analizė (100000000 įrašų)*
+| Realizacija | Perskirstymų skaičius |
+| ------ | ------------ |
+| std::vector | 28 |
+| Vector | 9 | 
+
+*Spartos analizė pilnoje studentų programoje*
+"Vector" realizacija
+| Testas | 100000 įrašų | 1000000 įrašų | 10000000 įrašų | 
+| ------ | ------------ | ------------- | -------------- |
+| Studentų konteinerio rūšiavimas pagal parinktį | < 0.1s | 0.4s | 4.4s |
+| Studentų rūšiavimas į 2 grupes | < 0.1s | <0.1s | 0.3s |
+| Duomenų nuskaitymas iš failo | 0.2s | 1.3s | 13.7s |
+| Rezultatų spausdinimas į failą | 0.5s | 5.3s | 53.7 |
+| Surūšiuotų studentų išvedimas į failą | 0.3s | 2.9s | 29.1s |
 
 
+"std::vector" realizacija
+| Testas | 100000 įrašų | 1000000 įrašų | 10000000 įrašų | 
+| ------ | ------------ | ------------- | -------------- |
+| Studentų konteinerio rūšiavimas pagal parinktį | < 0.1s | 0.1s | 4.1s |
+| Studentų rūšiavimas į 2 grupes | < 0.1s | 0.1s | 0.3s |
+| Duomenų nuskaitymas iš failo | 0.2s | 1.3s | 16.0s |
+| Rezultatų spausdinimas į failą | 0.5s | 5.0s | 54.4s |
+| Surūšiuotų studentų išvedimas į failą | 0.4s | 3.9s | 29.4s|
 
 Kilus klausimams ar pastaboms, susisiekti el. paštu: valentinas.samatovicius@mif.stud.vu.lt
