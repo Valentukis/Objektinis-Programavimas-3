@@ -306,10 +306,10 @@ Atlikus laiko analizę paaikšėjo, kad STL vector konteineris buvo apie 1.5x gr
 "std::vector" realizacija
 | Testas | 100000 įrašų | 1000000 įrašų | 10000000 įrašų | 
 | ------ | ------------ | ------------- | -------------- |
-| Studentų konteinerio rūšiavimas pagal parinktį | < 0.1s | 0.1s | 4.1s |
+| Studentų konteinerio rūšiavimas pagal parinktį | < 0.1s | 0.4s | 4.1s |
 | Studentų rūšiavimas į 2 grupes | < 0.1s | 0.1s | 0.3s |
-| Duomenų nuskaitymas iš failo | 0.2s | 1.3s | 16.0s |
-| Rezultatų spausdinimas į failą | 0.5s | 5.0s | 54.4s |
-| Surūšiuotų studentų išvedimas į failą | 0.4s | 3.9s | 29.4s|
+| Duomenų nuskaitymas iš failo | 0.2s | 1.6s | 16.0s |
+| Rezultatų spausdinimas į failą | 0.5s | 5.4s | 54.4s |
+| Surūšiuotų studentų išvedimas į failą | 0.4s | 2.9s | 29.4s|
 
 Kilus klausimams ar pastaboms, susisiekti el. paštu: valentinas.samatovicius@mif.stud.vu.lt
