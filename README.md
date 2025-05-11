@@ -6,8 +6,11 @@ Programos pasikeitimai tarp versijų:
 -v0.3: Pilnas refactoringas, pritaikomas geros programavimo praktikos.  
 -v0.4: Įgyvendinta failo generavimo bei studentų skirstymo į grupes pagal pažymius funkcijos.  
 -v1.0: Pilna programos versija, sutvarkytos direktyvos, patobulinta išvestis, sukurtas Makefile, realizuotos kelios versijos naudojant skirtingus konteinerius, optimizuotos senos funkcijos.  
--v1.1: Perdaryta programa naudojant klases, taip užtikrinant patogų programos naudojimą, duomenų saugumą, patikimumą. Sutvarkyta programos strukūra, paliekant tik efektyviausius metodus
--v1.2 Pritaikytas "Rule of five" studentų klasei, taip pat perdengti įvesties/išvesties operatoriui darbui su klase patogumui. Parašytas testas testuoti šią naują versiją.
+-v1.1: Perdaryta programa naudojant klases, taip užtikrinant patogų programos naudojimą, duomenų saugumą, patikimumą. Sutvarkyta programos strukūra, paliekant tik efektyviausius metodus\
+-v1.2 Pritaikytas "Rule of five" studentų klasei, taip pat perdengti įvesties/išvesties operatoriui darbui su klase patogumui. Parašytas testas testuoti šią naują versiją.\
+-v1.5 Atskirai sukurta abstract Zmogus ir derived Studentas klasės.
+-v2.0 Sukurti unit testai naudojant Catch, sugeneruota dokumentacija naudojant DOXYGEN
+-v3.0 Galutinė programos versija, naudojanti nuosavą vector konteinerį, su paruoštu diegimo failų ir pilnai parašytais unit testais naudojant Catch.
 
 **Įdiegimo instrukcija**
 
@@ -267,9 +270,17 @@ Versijoje 3.0 buvo sukurtas nuosavas Vector konteineris. Funkcionalumo prasme at
 * Non-member funkcijos. Šioje vietoje buvo nuspręsta neįtraukti palyginimo (<, >, etc) operatorių, nes nuo C++20 jie buvo pašalinti ir iš STL vector. Skirtingai nei STL vector, buvo pridėtas output galimybė  naudojant operatorių << (Išvedimas, kaip Python kalbos list)\
 ![image](https://github.com/user-attachments/assets/2fcb05e6-ae5e-4ef5-96bd-a940d31c827b)    
 
-*Testavimas*
+*Testavimas*\
 Taip pat buvo parašyti testai naudojant Catch klasės funkcionalumui testuoti. 
 ![image](https://github.com/user-attachments/assets/0f0f27af-6d3f-488b-9a2c-e05bbceebee2)
+
+***Nuosavos klasės spartos analizė***\
+Buvo atlikta efektyvumo spartos analizė lyginant sukurtą vector ir STL vector veikimo greitį naudojant push_back() funkciją ir sekant vykdymo laiką. Taip pat, buvo atliktas perskirstymų tyrimas. Galiausiai, pagrindinėje studentų programoje buvo lyginami greičiai tarp STL ir nuosavo Vector konteinerių.    
+
+Atlikus laiko analizę paaikšėjo, kad STL vector konteineris buvo apie 1.5x greitesnis negu nuosavas, o perskirstymų kiekis buvo vienodas. Atsižvelgus į tai buvo siekiama optimizuoti nuosavą konteinerį šiai programai ir pavyko ženkliai sumažinti perksirstymų skaičių ir pagreitinti, palyginus su STL vector. Pagrindinė optimizacija buvo Reserve() funkcijos growth faktoriaus pakeitimas. Paprastame STL vector jis yra 2x t.y. Jei size() == capacity(), capacity dvigubiname, o mūsų optimizuotame variante - padidiname 10x. Ši optimizacija geriau atitinka programos poreikius. Nepaisant to, bendras programos vykdymo laikas ypatingai nepasikeitė - taigi, limituoja ne vector įgyvendinimas, o duomenų skaitymas/rašyimas į failą. Visi laikai ir palyginimai pateikiami apačioje lentelėse:
+
+
+
 
 
 Kilus klausimams ar pastaboms, susisiekti el. paštu: valentinas.samatovicius@mif.stud.vu.lt
