@@ -10,7 +10,7 @@ test: class/studentas.cpp test_studentas.cpp
 	$(CXX) -o test_studentas test_studentas.cpp class/studentas.cpp 
 
 custom: vector/*.cpp
-	$(CXX) $(CXXFLAGS) -o custom vector/*.cpp
+	$(CXX) $(CXXFLAGS) -o custom vector/main.cpp vector/studentas.cpp vector/failu_funkcijos.cpp -Lvector -lspausdinimo
 
 clean:
-	rm -f main test_studentas
+	rm -f main test_studentas custom
