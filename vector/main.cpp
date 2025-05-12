@@ -1,5 +1,5 @@
 #include "mano_lib.h"
-#include "spausdinimo_funkcijos.h"
+#include "spausdinimo_export.h"
 #include "failu_funkcijos.h"
 #include "studentas.h"
 

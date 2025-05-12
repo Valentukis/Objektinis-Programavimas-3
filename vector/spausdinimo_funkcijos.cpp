@@ -1,3 +1,5 @@
+#define SPAUSDINIMO_EXPORTS
+#include "spausdinimo_export.h"
 #include "spausdinimo_funkcijos.h"
 
 void spausdinimas_atskiras(Vector <Studentas> &grupe) {
