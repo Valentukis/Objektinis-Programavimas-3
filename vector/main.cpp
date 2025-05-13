@@ -37,6 +37,7 @@ int main(){
             prog_pab = std::chrono::high_resolution_clock::now(); 
             prog_laik = prog_pab - prog_prad;
             cout << "Visa programa veikė: " << std::fixed << std::setprecision(1) << prog_laik.count() << "s" << endl;
+            system("pause");
             exit(0);
             break;
 
@@ -53,5 +54,6 @@ int main(){
     }
 
     spausdinimas_atskiras(grupe);
+    system("pause");
 }
 
