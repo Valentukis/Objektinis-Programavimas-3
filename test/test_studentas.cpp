@@ -1,4 +1,4 @@
-#include "class/studentas.h"
+#include "../vector/studentas.h"
 #include <cassert>
 #include <iostream>
 #include <sstream>
