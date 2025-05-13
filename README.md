@@ -8,8 +8,8 @@ Programos pasikeitimai tarp versijų:
 -v1.0: Pilna programos versija, sutvarkytos direktyvos, patobulinta išvestis, sukurtas Makefile, realizuotos kelios versijos naudojant skirtingus konteinerius, optimizuotos senos funkcijos.  
 -v1.1: Perdaryta programa naudojant klases, taip užtikrinant patogų programos naudojimą, duomenų saugumą, patikimumą. Sutvarkyta programos strukūra, paliekant tik efektyviausius metodus\
 -v1.2 Pritaikytas "Rule of five" studentų klasei, taip pat perdengti įvesties/išvesties operatoriui darbui su klase patogumui. Parašytas testas testuoti šią naują versiją.\
--v1.5 Atskirai sukurta abstract Zmogus ir derived Studentas klasės.
--v2.0 Sukurti unit testai naudojant Catch, sugeneruota dokumentacija naudojant DOXYGEN
+-v1.5 Atskirai sukurta abstract Zmogus ir derived Studentas klasės.\
+-v2.0 Sukurti unit testai naudojant Catch, sugeneruota dokumentacija naudojant DOXYGEN\
 -v3.0 Galutinė programos versija, naudojanti nuosavą vector konteinerį, su paruoštu diegimo failų ir pilnai parašytais unit testais naudojant Catch.
 
 **Įdiegimo instrukcija**
@@ -22,7 +22,6 @@ Jūsų patogumui, buvo sukurtas Makefile. Atsidarę mėgstamiausią terminalą, 
 2. Paleidimas  
   2.1 std::vector - "./main"   
   2.2 Nuosavas Vector - "./custom"
-  2.3 Testavimas - "./test"
 3. Programos valymas (ištrina sugeneruotus vykdomuosius failus) - "make clean"
 
 ![image](https://github.com/user-attachments/assets/cb8a2436-d262-4c9d-bc6d-33f241aac815)
